@@ -1,3 +1,6 @@
+import pymorphy2
+
+morph = pymorphy2.MorphAnalyzer()
 num = [i for i in range(0, 101)]
 print(num[len(num) // 2])
 
@@ -16,6 +19,10 @@ def bisearch(dif):
 
 
 b = input()
+c = 1
 while b != '=':
+    c += 1
     print(bisearch(b))
     b = input()
+word = morph.parse('попытку')[0]
+print(f'Я угадала за {c} {word.make_agree_with_number(c).word}, ваше число - {num[len(num) // 2]}')
